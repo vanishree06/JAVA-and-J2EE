@@ -1,0 +1,38 @@
+Write a JSP Program for login Validation
+
+login.html
+<!DOCTYPE html>
+<head>
+  <title>Login Page</title>
+</head>
+<body>
+<form action="login.jsp">
+<h3>Enter username : </h3>
+<input type="text" name="user">
+<br>
+<h3>Enter Password : </h3>
+<input type="text" name="pass">
+<br>
+<input type="submit" value="SUBMIT">
+</form>
+</body>
+</html>
+----------------------------------------------
+
+login.jsp
+<!DOCTYPE html>
+<head>
+  <title>Login Page</title>
+</head>
+<body>
+<%
+String s=request.getParameter("user");
+String t=request.getParmeter("pass");%>
+<%if(s=="admin" && t=="123")
+{%>
+  out.println("Welcome<%=a%> to JSP coding");
+ <%} else {%>
+ out.println("Doesn't match password and usename");
+ <% } %>
+ </body>
+ </html>
