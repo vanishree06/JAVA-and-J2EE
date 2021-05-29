@@ -1,0 +1,44 @@
+package database; 
+import java.sql.*;
+public class JdbcAccess {
+ 
+    public static void main(String[] args) {
+         
+        String databaseURL = "jdbc:ucanaccess://e://User//VANISHREESB//eclipse-workspace//databse//Employee.accdb";
+         
+        try  {
+             
+             
+            Connection connection = DriverManager.getConnection(databaseURL);
+            String sql = "INSERT INTO Contacts (E_id, E_Name, E_Addr) VALUES (?, ?, ?)";
+             
+            PreparedStatement prepareStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, "100");
+            preparedStatement.setString(2, "Pragati");
+            preparedStatement.setString(3, "Hubbali");
+             
+            int row = preparedStatement.executeUpdate();
+             
+            if (row > 0) {
+                System.out.println("Inserted successfully.");
+            }
+             
+            sql = "SELECT * FROM Contacts";
+             
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+             
+            while (rs.next()) {
+                int no = rs.getInt("Employee_No");
+                String eid = rs.getString("E_id");
+                String ename = rs.getString("E_Name");
+                String eadd = rs.getString("E_Addr");
+                 
+                System.out.println(no + ", " + E_id + ", " + E_Name + ", " + E_Addr);
+            }
+             
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
