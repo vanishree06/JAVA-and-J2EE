@@ -9,10 +9,10 @@ public class JdbcAccess {
         try  {
              
             Class.forName(net.ucanaccess.jdbc.UcanaccessDriver");
-            Connection connection = DriverManager.getConnection(databaseURL);
+            Connection con = DriverManager.getConnection(databaseURL);
             String sql = "INSERT INTO Contacts (E_id, E_Name, E_Addr) VALUES (?, ?, ?)";
              
-            PreparedStatement prepareStatement = connection.prepareStatement(sql);
+            PreparedStatement prepareStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, "100");
             preparedStatement.setString(2, "Pragati");
             preparedStatement.setString(3, "Hubbali");
@@ -23,9 +23,9 @@ public class JdbcAccess {
                 System.out.println("Inserted successfully.");
             }
              
-            sql = "SELECT * FROM Contacts";
+            sql = "select * from Employees";
              
-            Statement st = connection.createStatement();
+            Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
              
             while (rs.next()) {
