@@ -8,7 +8,7 @@ public class JdbcAccess {
          
         try  {
              
-             
+            Class.forName(net.ucanaccess.jdbc.UcanaccessDriver");
             Connection connection = DriverManager.getConnection(databaseURL);
             String sql = "INSERT INTO Contacts (E_id, E_Name, E_Addr) VALUES (?, ?, ?)";
              
