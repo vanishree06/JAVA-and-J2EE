@@ -10,9 +10,9 @@ public class JdbcAccess {
              
             Class.forName(net.ucanaccess.jdbc.UcanaccessDriver");
             Connection con = DriverManager.getConnection(databaseURL);
-            String sql = "INSERT INTO Contacts (E_id, E_Name, E_Addr) VALUES (?, ?, ?)";
+            String sql = "INSERT INTO Employees (E_id, E_Name, E_Addr) VALUES (?, ?, ?)";
              
-            PreparedStatement prepareStatement = con.prepareStatement(sql);
+            PreparedStatement preparedStatement = con.preparedStatement(sql);
             preparedStatement.setString(1, "100");
             preparedStatement.setString(2, "Pragati");
             preparedStatement.setString(3, "Hubbali");
@@ -32,9 +32,9 @@ public class JdbcAccess {
                 int no = rs.getInt("Employee_No");
                 String eid = rs.getString("E_id");
                 String ename = rs.getString("E_Name");
-                String eadd = rs.getString("E_Addr");
+                String eaddr = rs.getString("E_Addr");
                  
-                System.out.println(no + ", " + E_id + ", " + E_Name + ", " + E_Addr);
+                System.out.println(no + ", " + eid + ", " + ename + ", " + eaddr);
             }
              
         } catch (SQLException e) {
